@@ -1,16 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block content %}
+	
+	<div class="row">
 	{% for restaurant in restaurants %}
-		<h1>{{restaurant.name}}</h1>
-		<ul>
-			<li>Opening Time:{{restaurant.opening_time}}</li>
-			<li>Closing Time:{{restaurant.closing_time}}</li>
-		</ul>
+	<div class="col-xs-12 col-sm-6 col-md-4">
+	<div class="card" style="width: 20rem;">
+		{% if restaurant.logo %}
+		<img class="card-img-top" src="{{restaurant.logo.url}}" alt="Card image cap">	
+		{% endif %}
+		<div class="card-body">
+			<h4 class="card-title list-title">{{restaurant.name}}</h4>
+			<h6 class="card-subtitle mb-2 text-muted">{{restaurant.opening_time}} - {{restaurant.closing_time}}</h6>
+			<p class="card-text">{{restaurant.description}}</p>
+			<a href="{% url 'restaurant_update' restaurant_id=restaurant.id %}" class="btn btn-outline-primary">Update</a>
+			<a href="{% url 'restaurant_delete' restaurant_id=restaurant.id %}" class="btn btn-outline-danger">Delete</a>
+		</div>
+	</div>
+	</div>
 	{% endfor %}
-</body>
-</html>
+	</div>
+	<div class="pagination">
+	    <span class="step-links">
+	        {% if restaurants.has_previous %}
+	            <a href="?page={{ restaurants.previous_page_number }}">previous</a>
+	        {% endif %}
+
+	        <span class="current">
+	            Page {{ restaurants.number }} of {{ restaurants.paginator.num_pages }}.
+	        </span>
+
+	        {% if restaurants.has_next %}
+	            <a href="?page={{ restaurants.next_page_number }}">next</a>
+	        {% endif %}
+	    </span>
+	</div>
+
+{% endblock content %}

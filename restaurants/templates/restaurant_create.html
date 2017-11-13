@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div class="jumbotron">
+		<h1 class="display-3 text-">Create A Restaurant!</h1>
+	<form action="{% url 'restaurant_create' %}" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		{{form.as_p}}
+		<input type="submit" value="create" class="btn btn-dark">
+	</form>
+	</div>
+{% endblock content %}

@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block content %}
 		<h1>{{restaurant.name}}</h1>
 		<p>
 			{{restaurant.description}}
@@ -12,6 +8,8 @@
 		<ul>
 			<li>Opening Time:{{restaurant.opening_time}}</li>
 			<li>Closing Time:{{restaurant.closing_time}}</li>
+			{% if restaurant.logo %}
+				<li><img class="card-img-top" src="{{restaurant.logo.url}}" alt="Card image cap"></li>
+			{% endif %}
 		</ul>
-</body>
-</html>
+{% endblock content %}
