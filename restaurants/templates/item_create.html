@@ -1,0 +1,5 @@
+<form class="form-control" action="{% url 'item_create' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input class="btn btn-outline-primary" type="submit" value="Create">
+</form>

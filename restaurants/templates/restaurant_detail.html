@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-		<h1>{{restaurant.name}}</h1>
+		<h1>{{restaurant.name}} - <small>{{status}}</small></h1>
+		<h3>Current Time: {{now}}</h3>
 		<p>
 			{{restaurant.description}}
 		</p>
@@ -12,4 +13,8 @@
 				<li><img class="card-img-top" src="{{restaurant.logo.url}}" alt="Card image cap"></li>
 			{% endif %}
 		</ul>
+		{% for item in items %}
+			{{item.name}} <br>
+			{{item.price}} <br>
+		{% endfor %}
 {% endblock content %}

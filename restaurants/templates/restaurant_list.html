@@ -13,8 +13,8 @@
 			<h4 class="card-title list-title">{{restaurant.name}}</h4>
 			<h6 class="card-subtitle mb-2 text-muted">{{restaurant.opening_time}} - {{restaurant.closing_time}}</h6>
 			<p class="card-text">{{restaurant.description}}</p>
-			<a href="{% url 'restaurant_update' restaurant_id=restaurant.id %}" class="btn btn-outline-primary">Update</a>
-			<a href="{% url 'restaurant_delete' restaurant_id=restaurant.id %}" class="btn btn-outline-danger">Delete</a>
+			<a href="{% url 'restaurant_update' restaurant_slug=restaurant.slug %}" class="btn btn-outline-primary">Update</a>
+			<a href="{% url 'restaurant_delete' restaurant_slug=restaurant.slug %}" class="btn btn-outline-danger">Delete</a>
 		</div>
 	</div>
 	</div>
