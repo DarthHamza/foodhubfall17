@@ -1,7 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-		<h1>{{restaurant.name}} - <small>{{status}}</small></h1>
+		<h1>{{restaurant.name}} - 
+			<small>
+				{% if restaurant.opening_time < now and now < restaurant.closing_time %}
+					open
+				{% else %}
+					closed
+				{% endif %}
+			</small>
+		</h1>
 		<h3>Current Time: {{now}}</h3>
 		<p>
 			{{restaurant.description}}

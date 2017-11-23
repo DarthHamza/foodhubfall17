@@ -7,6 +7,11 @@ class RestaurantForm(forms.ModelForm):
         fields = '__all__'
         exclude = ['slug']
 
+        widgets = {
+        	'opening_time' : forms.TimeInput(attrs={'type':'time'}),
+        	'closing_time' : forms.TimeInput(attrs={'type':'time'}),
+        }
+
 class ItemForm(forms.ModelForm):
     class Meta:
         model = Item

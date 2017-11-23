@@ -26,16 +26,11 @@ def restaurant_list(request):
 def restaurant_detail(request, restaurant_slug):
     restaurant = Restaurant.objects.get(slug=restaurant_slug)
     items = restaurant.item_set.all()
-    status = "Open"
     now = timezone.now().time()
-
-    if not (restaurant.opening_time < now and now < restaurant.closing_time):
-        status = "Closed"
 
     if not request.user.is_staff:
         items = items.filter(active=True)
     context = {
-        "status":status,
         "restaurant": restaurant,
         "items":items,
         "now":now,
